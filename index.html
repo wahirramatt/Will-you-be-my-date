@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Girlfriend? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(-45deg, #FFB6C1, #FF69B4, #FFC0CB, #DC143C, #FFE4E1);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Animated background shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(220,20,60,0.5), transparent);
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,182,193,0.6), transparent);
+            top: 50%;
+            right: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            33% {
+                transform: translateY(-30px) translateX(30px) scale(1.1);
+            }
+            66% {
+                transform: translateY(30px) translateX(-30px) scale(0.9);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(30px);
+            border-radius: 40px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+            max-width: 650px;
+            width: 90%;
+            animation: fadeInScale 1.5s ease-out;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #DC143C, #FF1493, #FFB6C1, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            letter-spacing: 2px;
+            line-height: 1.3;
+            animation: textGlow 3s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(220, 20, 60, 0.3);
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 35px rgba(255, 20, 147, 0.9));
+            }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 22px 55px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            position: relative;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #DC143C, #FF1493);
+            color: white;
+            animation: pulse 2s ease-in-out infinite;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 12px 35px rgba(220, 20, 60, 0.4), 0 0 0 0 rgba(220, 20, 60, 0.7);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 45px rgba(220, 20, 60, 0.6), 0 0 0 15px rgba(220, 20, 60, 0);
+            }
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 20px 60px rgba(220, 20, 60, 0.7);
+            animation: none;
+        }
+
+        #yesBtn:active {
+            transform: scale(1.08);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+            color: #DC143C;
+            position: absolute;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(220, 20, 60, 0.3);
+        }
+
+        #noBtn:hover {
+            transform: scale(1.1);
+        }
+
+        .success-message {
+            margin-top: 40px;
+            font-size: 2em;
+            color: white;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            animation: messageFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes messageFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Celebration overlay */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Floating hearts */
+        .heart-particle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+        }
+
+        .heart-particle::before,
+        .heart-particle::after {
+            content: "❤️";
+            position: absolute;
+            font-size: 30px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .container {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+            
+            button {
+                padding: 18px 40px;
+                font-size: 1.3em;
+            }
+            
+            .button-container {
+                gap: 25px;
+                min-height: 70px;
+            }
+
+            .success-message {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background shapes -->
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+
+    <div class="container">
+        <h1>Will you be my Date? <p>ON This 14th Febuary</p> </h1>
+        
+        
+        <div class="button-container" id="buttonContainer">
+            <button id="yesBtn">Yes ❤️</button>
+            <button id="noBtn">No 💔</button>
+        </div>
+        
+        <div class="success-message" id="successMsg"></div>
+    </div>
+
+    <div class="celebration" id="celebration"></div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const successMsg = document.getElementById('successMsg');
+        const celebration = document.getElementById('celebration');
+        const buttonContainer = document.getElementById('buttonContainer');
+
+        let noBtnMoved = false;
+
+        // No button runs away from cursor
+        document.addEventListener('mousemove', (e) => {
+            if (noBtnMoved || !noBtn.offsetParent) return;
+
+            const noBtnRect = noBtn.getBoundingClientRect();
+            const noBtnCenterX = noBtnRect.left + noBtnRect.width / 2;
+            const noBtnCenterY = noBtnRect.top + noBtnRect.height / 2;
+            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const distanceX = mouseX - noBtnCenterX;
+            const distanceY = mouseY - noBtnCenterY;
+            const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            // If cursor is within 150px of the button, move it away
+            if (distance < 150) {
+                moveNoButton();
+            }
+        });
+
+        // Touch support for mobile
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        function moveNoButton() {
+            const containerRect = buttonContainer.getBoundingClientRect();
+            const buttonRect = noBtn.getBoundingClientRect();
+            
+            // Calculate safe boundaries
+            const maxX = window.innerWidth - buttonRect.width - 40;
+            const maxY = window.innerHeight - buttonRect.height - 40;
+            const minX = 20;
+            const minY = 20;
+            
+            // Generate random position
+            let newX = Math.random() * (maxX - minX) + minX;
+            let newY = Math.random() * (maxY - minY) + minY;
+            
+            // Ensure the button doesn't overlap with Yes button
+            const yesBtnRect = yesBtn.getBoundingClientRect();
+            const buffer = 120;
+            
+            if (Math.abs(newX - yesBtnRect.left) < buffer && 
+                Math.abs(newY - yesBtnRect.top) < buffer) {
+                newX = newX > window.innerWidth / 2 ? maxX : minX;
+                newY = newY > window.innerHeight / 2 ? maxY : minY;
+            }
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+            noBtn.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                noBtn.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Yes button click handler
+        yesBtn.addEventListener('click', () => {
+            noBtnMoved = true;
+            
+            // Hide No button
+            noBtn.style.opacity = '0';
+            setTimeout(() => {
+                noBtn.style.display = 'none';
+            }, 300);
+            
+            // Show success message
+            successMsg.textContent = "You've made me the happiest person! 💕✨";
+            successMsg.classList.add('show');
+            
+            // Change Yes button
+            yesBtn.textContent = "I knew it! 😍";
+            yesBtn.style.animation = 'none';
+            
+            // Trigger celebrations
+            createCelebration();
+            
+            // Send email confirmation
+            setTimeout(() => {
+                const subject = encodeURIComponent("YES! I'll Be Your Girlfriend! 💕");
+                const body = encodeURIComponent("Yes! I'd love to be your girlfriend! ❤️💕\n\nWith all my love,\n[Your name here]");
+                window.location.href = `mailto:kevinmatt095@gmail.com?subject=${subject}&body=${body}`;
+            }, 1000);
+        });
+
+        function createCelebration() {
+            // Create floating hearts
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 100);
+            }
+            
+            // Create confetti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 50);
+            }
+        }
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '-50px';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            
+            celebration.appendChild(heart);
+            
+            const animation = heart.animate([
+                { 
+                    transform: 'translateY(0) rotate(0deg) scale(0)',
+                    opacity: 0
+                },
+                { 
+                    transform: `translateY(-${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg) scale(1)`,
+                    opacity: 1
+                }
+            ], {
+                duration: Math.random() * 2000 + 3000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => heart.remove();
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            const colors = ['#DC143C', '#FF1493', '#FFB6C1', '#fff', '#FFC0CB'];
+            
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = '-20px';
+            confetti.style.width = (Math.random() * 10 + 5) + 'px';
+            confetti.style.height = (Math.random() * 10 + 5) + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            confetti.style.zIndex = '9999';
+            confetti.style.pointerEvents = 'none';
+            
+            celebration.appendChild(confetti);
+            
+            const animation = confetti.animate([
+                { 
+                    transform: 'translateY(0) rotate(0deg)',
+                    opacity: 1
+                },
+                { 
+                    transform: `translateY(${window.innerHeight + 20}px) rotate(${Math.random() * 720}deg)`,
+                    opacity: 0
+                }
+            ], {
+                duration: Math.random() * 2000 + 2000,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }
+
+        // Initial position for No button
+        setTimeout(() => {
+            const containerRect = buttonContainer.getBoundingClientRect();
+            noBtn.style.position = 'relative';
+        }, 100);
+    </script>
+</body>
+</html>
